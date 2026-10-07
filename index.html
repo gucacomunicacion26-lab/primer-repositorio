@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Una elegante y moderna página de bienvenida Hello World.">
+  <title>Hello World</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #0b0f19;
+      --card-bg: rgba(255, 255, 255, 0.04);
+      --card-border: rgba(255, 255, 255, 0.1);
+      --accent-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+      min-height: 100vh;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Ambient background glowing orbs */
+    .glow-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.5;
+      pointer-events: none;
+      animation: float 14s ease-in-out infinite alternate;
+    }
+
+    .glow-1 {
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, #6366f1, transparent);
+      top: -100px;
+      left: -100px;
+    }
+
+    .glow-2 {
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, #ec4899, transparent);
+      bottom: -120px;
+      right: -120px;
+      animation-duration: 18s;
+      animation-delay: -5s;
+    }
+
+    .glow-3 {
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, #06b6d4, transparent);
+      bottom: 20%;
+      left: 20%;
+      animation-duration: 20s;
+      animation-delay: -9s;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translate(0, 0) scale(1);
+      }
+      50% {
+        transform: translate(40px, 60px) scale(1.08);
+      }
+      100% {
+        transform: translate(-30px, 30px) scale(0.95);
+      }
+    }
+
+    /* Main Card */
+    .card {
+      position: relative;
+      z-index: 10;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-radius: 24px;
+      padding: 3rem 3.5rem;
+      max-width: 520px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5),
+                  0 0 0 1px rgba(255, 255, 255, 0.05);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 35px 60px -15px rgba(0, 0, 0, 0.65),
+                  0 0 30px -5px rgba(99, 102, 241, 0.25);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #cbd5e1;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 9999px;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      background-color: #10b981;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #10b981;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.85); }
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+      line-height: 1.1;
+    }
+
+    p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      font-weight: 300;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    .btn-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.85rem 1.8rem;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #ffffff;
+      background: var(--accent-gradient);
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.4);
+    }
+
+    .btn-action:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 15px 30px -5px rgba(168, 85, 247, 0.5);
+    }
+
+    .btn-action:active {
+      transform: translateY(0);
+    }
+
+    @media (max-width: 640px) {
+      .card {
+        padding: 2.5rem 1.5rem;
+      }
+      h1 {
+        font-size: 2.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Background ambient glow elements -->
+  <div class="glow-orb glow-1"></div>
+  <div class="glow-orb glow-2"></div>
+  <div class="glow-orb glow-3"></div>
+
+  <!-- Content card -->
+  <main class="card" id="main-content">
+    <div class="badge">
+      <span class="badge-dot"></span>
+      Online
+    </div>
+    <h1 id="greeting-title">Hello, World!</h1>
+    <p id="greeting-desc">Bienvenido a tu primer proyecto. Todo está listo para comenzar a construir cosas increíbles.</p>
+    <button class="btn-action" id="interact-btn" onclick="celebrate()">¡Comenzar!</button>
+  </main>
+
+  <script>
+    function celebrate() {
+      const btn = document.getElementById('interact-btn');
+      btn.textContent = '🚀 ¡Listo!';
+      btn.style.filter = 'brightness(1.2)';
+      setTimeout(() => {
+        btn.textContent = '¡Comenzar!';
+        btn.style.filter = 'none';
+      }, 1500);
+    }
+  </script>
+</body>
+</html>
